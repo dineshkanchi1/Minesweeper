@@ -162,7 +162,7 @@ img {
   }
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 200px) and (max-width: 767px) {
   input[type] {
     padding: 12px;
     width: 80%;
@@ -180,6 +180,10 @@ img {
   .btn-container > button {
     width: 70%;
   }
+  #image {
+    height: 100px;
+    width: 250px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -195,6 +199,10 @@ img {
   button {
     font-size: 1.5em;
     width: 100%;
+  }
+  #image {
+    height: 200px;
+    width: 500px;
   }
 }
 
