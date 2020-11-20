@@ -46,6 +46,8 @@ let checkBomb = (el) => {
     }
     status = document.getElementById("status");
     status.innerHTML = "Game Over";
+    let image = document.getElementById("image");
+    image.setAttribute("src", "gameover.svg");
     setTimeout(gameOver, 2000);
   } else {
     let count = 0;
@@ -65,6 +67,8 @@ let checkBomb = (el) => {
   if (score === size * size - noOfBombs) {
     status = document.getElementById("status");
     status.innerHTML = "You Won";
+    let image = document.getElementById("image");
+    image.setAttribute("src", "winner.svg");
     setTimeout(gameOver, 2000);
   }
 };
@@ -117,8 +121,8 @@ let startGame = () => {
     return;
   }
   size = parseInt(size);
-  if (size < 3) {
-    alert("Enter grid size above 2");
+  if (size < 3 || size > 9) {
+    alert("Enter Valid Grid Size");
     return;
   }
   noOfBombs = document.getElementById("no-of-bombs").value;
@@ -127,12 +131,14 @@ let startGame = () => {
     return;
   }
   noOfBombs = parseInt(noOfBombs);
-  if (noOfBombs < 3) {
-    alert("Enter more than 2 bombs");
+  if (noOfBombs < 3 || noOfBombs >= size * size) {
+    alert("Enter Valid no of Bombs");
     return;
   }
   let playerId = document.getElementById("player");
   playerId.innerHTML = "<h1>Player : " + player.value + "</h1>";
+  let noOfBombsContainer = document.getElementById("no-of-bombs-display");
+  noOfBombsContainer.innerHTML = "No of Bombs : " + noOfBombs;
   playerContainer = document.getElementById("player-input-container");
   gameContainer = document.getElementById("game-container");
   playerContainer.style.display = "none";
@@ -149,6 +155,8 @@ let startGame = () => {
 let newGame = () => {
   let player = document.getElementById("player-name");
   player.value = "";
+  let noOfBombsContainer = document.getElementById("no-of-bombs-display");
+  noOfBombsContainer.innerHTML = "";
   document.getElementById("no-of-bombs").value = "";
   document.getElementById("grid-size").value = "";
   playerContainer.style.display = "flex";
